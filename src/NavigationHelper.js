@@ -33,12 +33,19 @@ function backToRoute(navigation, routeName) {
         index = i;
       }
     });
-  navigation.setParams({
-    helperOptions: {
-      type: NavigationActions.BACK,
-      index
-    }
-  });
+  /** 回去的页面刚好是上个页面 */
+  if (index === routes.length -2){
+    navigation.goBack()
+  }
+  else{
+    /**  */
+    navigation.setParams({
+      helperOptions: {
+        type: NavigationActions.BACK,
+        index
+      },
+    })
+  }
 }
 
 function handlerNavigationAction(navigation) {
